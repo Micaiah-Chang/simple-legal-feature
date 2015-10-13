@@ -77,7 +77,12 @@ WSGI_APPLICATION = 'root.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'NAME': "simpledb",
+        'HOST': "localhost",
+        "PORT": "",                       # default port
+        "USER": "django",
+        "PASSWORD": "asdf",                   # In practice, this would be read from a file
+
     }
 }
 
