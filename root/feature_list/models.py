@@ -14,7 +14,7 @@ class FeatureModel(Model):
     # Features do not necessarily have to be
     # localized to one page, nor even be part of one
     # Maybe needs to be updated to a Many to Many field later
-    url = URLField(null=True, blank=True)
+    url = URLField(default="", blank=True)
     # This may turn into a foreign key in the future, if
     # feature searches are needed internally
     lead_developer = CharField(max_length=200)
