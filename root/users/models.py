@@ -17,7 +17,9 @@ def _user_decorator(create_user):
     @wraps(create_user)
     def register_last_active(*args, **kwargs):
         user = create_user(*args, **kwargs)
-        active_time = UserActiveTime(user=user, last_active=datetime.now())
+        active_time = UserActiveTime(user=user,
+                                     last_active=user.date_joined)
+        active_time.save()
         return user, active_time
 
     return register_last_active
