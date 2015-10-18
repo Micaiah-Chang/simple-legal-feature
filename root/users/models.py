@@ -1,10 +1,13 @@
 from datetime import datetime
 from functools import wraps
+
+from django.contrib.auth.models import User
 from django.db import models
+
 
 # Create your models here.
 class UserActiveTime(models.Model):
-    user = models.ForeignKey("models.User")
+    user = models.ForeignKey(User)
     last_active = models.DateTimeField()
 
 def _user_decorator(create_user):
@@ -19,4 +22,4 @@ def _user_decorator(create_user):
 
     return register_last_active
 
-create_user = _user_decorator(models.User.objects.create_user)
+create_user = _user_decorator(User.objects.create_user)
