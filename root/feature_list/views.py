@@ -6,6 +6,7 @@ from django.http import HttpResponseNotAllowed
 
 from users.models import UserActiveTime
 from .models import FeatureModel
+import services
 # Create your views here.
 
 
@@ -30,12 +31,14 @@ def read_changesets(request, user):
     active_time_row = UserActiveTime.objects.get(user=user)
     last_seen, now = active_time_row.last_active, datetime.now()
 
-    new_features = FeatureModel.objects.filter(date__gt=last_seen,
-                                               date__lt=now)
+    features = FeatureModel.objects.all()
+    new_features = services.features_since(features, last_seen, now)
 
-    update_last_seen = now
-    active_time_row.last_active = update_last_seen
-    active_time_row.save()
+    # update the selected time_row to reflect
+    # the fact that the user has already seen
+    # the features
+    updated_time = services.update_last_seen(active_time_row, now)
+    updated_time.save()
 
     return render(request, "feature_list/changesets.html",
                   {"features": new_features})
