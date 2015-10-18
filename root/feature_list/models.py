@@ -22,4 +22,4 @@ class FeatureModel(Model):
     title = CharField(max_length=140)
 
     def __unicode__(self):
-        return u"%s", self.title
+        return u"%s" % self.title
