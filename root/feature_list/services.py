@@ -12,3 +12,7 @@ def features_since(features, first, second):
     """
     return features.objects.filter(date__gt=first,
                                    date__lt=second)
+
+def is_new_feature(features, last_seen):
+    newest_feature = features.order_by('date').first()
+    return newest_feature.date > last_seen
