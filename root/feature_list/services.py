@@ -10,8 +10,8 @@ def features_since(features, first, second):
     Grab all the features in between the
     first and second dates
     """
-    return features.objects.filter(date__gt=first,
-                                   date__lt=second)
+    return features.filter(date__gt=first,
+                           date__lt=second)
 
 def is_new_feature(features, last_seen):
     newest_feature = features.order_by('date').first()
