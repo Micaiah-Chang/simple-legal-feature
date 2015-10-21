@@ -4,5 +4,5 @@ from django.contrib import admin
 from views import changeset_route
 
 urlpatterns = [
-    url(r'$', changeset_route),
+    url(r'$', changeset_route, name="changeset"),
 ]
