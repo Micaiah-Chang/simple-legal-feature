@@ -1,14 +1,14 @@
 from users.models import UserActiveTime
 from .models import FeatureModel
-import .services
+import services
 
 def check_newest(request):
     user = request.user
 
-    if user.isauthenticated():
+    if user.is_authenticated():
         features = FeatureModel.objects.all()
 
-        last_seen = UserActiveTime.objects.get(user=user).first().last_active
+        last_seen = UserActiveTime.objects.get(user=user).last_active
         is_new_feature = services.is_new_feature(features, last_seen)
         return {"feature_changes": is_new_feature}
     else:
