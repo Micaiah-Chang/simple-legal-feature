@@ -78,19 +78,8 @@ WSGI_APPLICATION = 'root.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': "simpledb",
-        'HOST': "localhost",
-        "PORT": "",                       # default port
-        "USER": "django",
-        "PASSWORD": "asdf",                   # In practice, this would be read from a file
-
-    }
-}
-
+import dj_database_url
+DATABASES = {'default': dj_database_url.config(default='postgres://django:asdf@localhost:5432/simpledb')}
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.8/topics/i18n/
