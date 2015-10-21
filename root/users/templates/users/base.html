@@ -1,6 +1,11 @@
 
 {% block nav_bar %}
-Empty Nav bar
+{% if is_new_feature %}
+New features available! Click <a href="{% url 'features:changeset'%}">here</a> to see them.
+{% else %}
+No changes to show
+{% endif%}
+<br/>
 {% endblock nav_bar %}
 
 
