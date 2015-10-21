@@ -1,4 +1,5 @@
 from django.conf.urls import patterns, url
+from views import index
 urlpatterns = patterns('',
     url(
         r'^login/$',
@@ -12,4 +13,5 @@ urlpatterns = patterns('',
         name='logout',
         kwargs={'next_page': '/'}
     ),
+    url(r'^$', index, name="index"),
 )
