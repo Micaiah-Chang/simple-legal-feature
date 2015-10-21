@@ -1,4 +1,4 @@
-from .users.models import create_user
+from users.models import create_user
 
 u1, active_time1 = create_user(username="ahchang", password="password")
 (u1.save(), active_time1.save())
