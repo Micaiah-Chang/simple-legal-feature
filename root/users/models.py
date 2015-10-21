@@ -10,6 +10,9 @@ class UserActiveTime(models.Model):
     user = models.ForeignKey(User)
     last_active = models.DateTimeField()
 
+    def __unicode__(self):
+        return u"%s" % self.user
+
 def _user_decorator(create_user):
     """Force a user's 'last active' time
     to be always set when the user is registered.
