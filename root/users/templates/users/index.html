@@ -1,8 +1,8 @@
 {% extends "users:users/base.html" %}
 {% block content %}
-This is the homepage!
+<h1>This is the homepage!</h1>
 <br/>
-<a href="{% url 'users:login' %}">Login here!</a>
+<a href="{% url 'users:login' %}">Login here!</a><br/>
 <a href="{% url 'features:changeset' %}">Changesets</a>
 
 {% endblock %}
