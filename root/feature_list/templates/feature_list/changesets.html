@@ -1,11 +1,19 @@
 {% extends "users:users/base.html" %}
 
 {% block content %}
-<table>
+<table border="1">
 	{% for feature in features %}
+	{% if forloop.first %}
+	<tr>
+		<td>Title</td>
+		<td>Description</td>
+		<td>Handcrafted by:</td>
+	</tr>
+	{% endif %}
 	<tr>
 		<td>{{ feature.title }}</td>
 		<td>{{ feature.description }}</td>
+		<td>{{ feature.lead_developer }}</td>
 	</tr>
 	{% empty %}
 	Really no features :(
