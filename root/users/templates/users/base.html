@@ -1,10 +1,18 @@
 
 {% block nav_bar %}
-{% if is_new_feature %}
-New features available! Click <a href="{% url 'features:changeset'%}">here</a> to see them.
-{% else %}
-No changes to show
-{% endif%}
+<b>
+	<a href="users:index">Home</a>
+	{% if is_new_feature %}
+	New features available! Click <a href="{% url 'features:changeset'%}">here</a> to see them.
+	{% else %}
+	No changes to show
+	{% endif %}
+	{% if user.is_authenticated %}
+	<a href="{% url 'users:logout' %}">Logout</a>
+	{% else %}
+	<a href="{% url 'users:login' %}">Login</a>
+	{% endif %}
+</b>
 <br/>
 {% endblock nav_bar %}
 
