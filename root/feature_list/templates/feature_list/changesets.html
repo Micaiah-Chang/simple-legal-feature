@@ -7,6 +7,8 @@
 		<td>{{ feature.title }}</td>
 		<td>{{ feature.description }}</td>
 	</tr>
+	{% empty %}
+	Really no features :(
 	{% endfor %}
 </table>
 
